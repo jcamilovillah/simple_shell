@@ -1,6 +1,6 @@
 #include "shell.h"
 /**
- *
+ * searchpath -
  *
  */
 char **searchpath(char **argv, char **path, int status)
