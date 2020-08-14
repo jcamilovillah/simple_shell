@@ -15,7 +15,7 @@ int (*builtin(char **s))(void)
 
 	while (ops[i].comand)
 	{
-		if (strcmp(ops[i].comand, s[0]) == 0)
+		if (_strcmp(ops[i].comand, s[0]) == 0)
 			return (ops[i].func);
 		i++;
 	}

@@ -14,8 +14,8 @@ char **searchpath(char **argv, char **path, int status)
 		while (path[i])
 		{
 			aux = strdup(path[i]);
-			strcat(aux, "/");
-                        strcat(aux, argv[0]);
+			_strcat(aux, "/");
+                        _strcat(aux, argv[0]);
 			if (stat(aux, &buf) == 0)
 			{
 				argv[0] = strdup(aux);
@@ -40,7 +40,7 @@ char **divpath(char **environ)
 	while (environ[index])
 	{
 		aux = strdup(environ[index]);
-		if (strcmp(strtok(aux, "="), "PATH") != 0)
+		if (_strcmp(strtok(aux, "="), "PATH") != 0)
 			index++;
 		else
 		{

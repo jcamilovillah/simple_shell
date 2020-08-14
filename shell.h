@@ -33,4 +33,7 @@ int envir(void);
 int _putchar(char *c);
 void newline(int number);
 
+int _strcmp(char *s1, char *s2);
+char *_strncat(char *dest, char *src, int n);
+
 #endif
