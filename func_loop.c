@@ -106,16 +106,22 @@ void func_loop(void)
 	size_t size = 0;
 	int i = 0;
 	int (*validar)(void);
+	ssize_t line; 
 
 	write(STDIN_FILENO, "$shell ", 8);
 	signal(SIGINT, newline);
 	while (1)
 	{
-		if (getline(&str, &size, stdin) == EOF)
+		line = getline(&str, &size, stdin);
+		if (line == EOF)
 		{
 			write(STDIN_FILENO, "\n", 1);
 			exit(0);
 		}
+		/*if(str == "\n")
+		{
+			newline(1);
+		}*/
 		argv = arguments(str);
 		validar = builtin(argv);
 		if (validar)
