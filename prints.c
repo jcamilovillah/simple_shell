@@ -1,6 +1,7 @@
 #include "shell.h"
 /**
  * newline - print a new line.
+ * @number: pues numero.
  * Return: 0 always.
  */
 void newline(int number)

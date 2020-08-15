@@ -13,23 +13,24 @@
  * struct built_t - anothers commands.
  * @comand: command.
  * @next: points to the next node.
+ * @func: function to executing
  */
 typedef struct built_t
 {
 	char *comand;
-	int (*func)(void);
+	int (*func)(char **);
 	struct built_t *next;
 } built;
 
-void func_loop(void);
-int (*builtin(char **s))(void);
+void func_loop(char **environ);
+int (*builtin(char **s))(char **);
 
 char **searchpath(char **argv, char **path, int status);
 char **divpath(char **environ);
-void search_command(char **argv);
+void search_command(char **argv, char **environ);
 char **arguments(char *s);
-int ex(void);
-int envir(void);
+int ex(char **environ);
+int envir(char **environ);
 int _putchar(char *c);
 void newline(int number);
 

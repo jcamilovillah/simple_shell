@@ -4,7 +4,7 @@
  * @s: is the command to compare.
  * Return: 0 always.
  */
-int (*builtin(char **s))(void)
+int (*builtin(char **s))(char **environ)
 {
 	built ops[] = {
 		{"exit", ex},
