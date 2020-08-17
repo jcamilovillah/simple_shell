@@ -18,7 +18,7 @@ Holberton School Shell (hsh), is a simple program of the line commands. This sim
 
 ## Requirements 📋
 
-Simple_shell is designed to run in the `Ubuntu 14.04 LTS` linux environment and to be compiled using the GNU compiler collection v. `gcc 4.8.4` with flags`-Wall, -Werror, -Wextra, and -pedantic.
+Simple_shell is designed to run in the `Ubuntu 14.04 LTS` linux environment and to be compiled using the GNU compiler collection v. `gcc 4.8.4` with flags `-Wall, -Werror, -Wextra, and -pedantic`.
 
 ## Installation and Compilation🔧
 

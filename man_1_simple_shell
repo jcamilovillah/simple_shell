@@ -42,14 +42,14 @@ The return value of a simple command is its exit status. returns various values 
 
 $./hsh
 
-$ touch Hello.txt
+$ touch hello.txt
 
 $ ls
 
 .RS 3
 firts.txt
 .TB
-Hello.txt
+hello.txt
 .TB
 second.txt
 .RE
@@ -62,7 +62,7 @@ $ |
 [$ /bin/ls
 .RE
 .RS +4
-hsh firts.txt hello.tx second.txt
+hsh firts.txt hello.txt second.txt
 .RE
 .RS +4
 $
@@ -153,6 +153,6 @@ ends the process that is running, useful to regain control of the system.
 .SH BUGS
 Not found at the moment in the implemented functionalities, if you find any inform us.
 .SH AUTHORS
-Oscar Javier De León <osquitar@gmail.com>
+Oscar Javier De León <oscardleon95@gmail.com>
 .br
 Juan Camilo Villa H. <villahjuancamilo@gmail.com>
