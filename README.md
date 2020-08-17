@@ -1,20 +1,22 @@
-<img src="https://pbs.twimg.com/media/EfpJUkaXkAAwhhT?format=jpg&name=900x900" alt="shell" border="0">
+<img src="https://pbs.twimg.com/media/EfpJUkaXkAAwhhT?format=jpg&name=900x900" alt="shell" width="1000">
+
+
+## Introduction 🚀
 
 The simple shell project is a collaboration between **Oscar De León** and **Juan Camilo Villa**, Full Stack Software Engineering students at **Holberton School**, with which we can emulate the operation of a shell, which contains some of its most basic characteristics, such as : Handle `PATH`, Handle command lines with `arguments`, Must handle "**end of file**" condition.
 
 # Table of Contents
 1. [Description](#description-)
 2. [Requirements](#requirements-)
-3. [Installation](#instalation-)
-4. [Compilation](#compilation-)
-5. [Use](#use-)
-5. [Authors](#authors-)
+3. [Installation and Compilation](#installation-and-compilation)
+4. [Use](#example-of-use-)
+5. [Authors](#authors-%EF%B8%8F)
 
-## Description 🚀
+## Description 📖
 
 Holberton School Shell (hsh), is a simple program of the line commands. This simple shell recreates basic and some more complex functionalities to result in our own Shell. This shell si developed in the programming language c. This shell takes the keyboard commands and delivers them to the system to be executed. some built-in commands implement: exit, env, help, cd.
 
-## Requeriments 📋
+## Requirements 📋
 
 Simple_shell is designed to run in the `Ubuntu 14.04 LTS` linux environment and to be compiled using the GNU compiler collection v. `gcc 4.8.4` with flags`-Wall, -Werror, -Wextra, and -pedantic.
 
@@ -42,7 +44,7 @@ after compilation you can excecute with this command:
 ## Authors ✒️
 
 <p align="left">
-    <h4 align="left">Oscar de Leon Giraldo </h4>
+    <h3 align="left"> Oscar de León Giraldo </h3>
       <p align="left">
 	   </a>
 		<p align="left">
@@ -55,7 +57,7 @@ after compilation you can excecute with this command:
         <a href="https://medium.com/@1839" target="_blank">
             <img alt="medium_page" src="https://github.com/gedafu/readme-template/blob/master/images/medium.png" style="float: center; margin-right: 10px" height="50" width="50">
 			</a>
-			<h4 align="left">Juan Camilo Villa H. </h4>
+			<h3 align="left">Juan Camilo Villa H. </h3>
       		<p align="left">
 	   		</a>
 			<p align="left">
@@ -65,11 +67,7 @@ after compilation you can excecute with this command:
         <a href="https://www.linkedin.com/in/juan-camilo-villa-3450aa1b0/" target="_blank">
             <img alt="linkedin_page" src="https://github.com/gedafu/readme-template/blob/master/images/linkedin.png" style="float: center; margin-right: 10px" height="50"  width="50">
         </a>
-        <a href="https://medium.com/@jcamilovillah" target="_blank">
+        <a href="https://medium.com/@juancamilovilla" target="_blank">
             <img alt="medium_page" src="https://github.com/gedafu/readme-template/blob/master/images/medium.png" style="float: center; margin-right: 10px" height="50" width="50">
 			 </a>
 </p>
-
-
-
-
