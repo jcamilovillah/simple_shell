@@ -44,7 +44,7 @@ after compilation you can excecute with this command:
 ## Authors ✒️
 
 <p align="left">
-    <h3 align="left"> Oscar de León Giraldo </h3>
+    <h3 align="left"> Oscar De León Giraldo </h3>
       <p align="left">
 	   </a>
 		<p align="left">
