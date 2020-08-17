@@ -1,10 +1,10 @@
 #include "shell.h"
 /**
- * builtin - Indicates the function to follow according.
+ * builtin - indicates the function to perform, according to s.
  * @s: is the command to compare.
- * Return: 0 always.
+ * Return: function to perform or NULL.
  */
-int (*builtin(char **s))(char **environ)
+void (*builtin(char *s))(char **argv, char **environ, int count)
 {
 	built ops[] = {
 		{"exit", ex},
@@ -15,7 +15,7 @@ int (*builtin(char **s))(char **environ)
 
 	while (ops[i].comand)
 	{
-		if (_strcmp(ops[i].comand, s[0]) == 0)
+		if (_strcmp(ops[i].comand, s) == 0)
 			return (ops[i].func);
 		i++;
 	}
