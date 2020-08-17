@@ -4,7 +4,7 @@
  * @s: is the command to compare.
  * Return: 0 always.
  */
-int (*builtin(char **s))(char **environ)
+int (*builtin(char *s))(char **argv, char **environ, int count)
 {
 	built ops[] = {
 		{"exit", ex},
@@ -15,7 +15,7 @@ int (*builtin(char **s))(char **environ)
 
 	while (ops[i].comand)
 	{
-		if (_strcmp(ops[i].comand, s[0]) == 0)
+		if (_strcmp(ops[i].comand, s) == 0)
 			return (ops[i].func);
 		i++;
 	}

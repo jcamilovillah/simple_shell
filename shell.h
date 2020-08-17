@@ -9,6 +9,14 @@
 #include <sys/stat.h>
 #include <signal.h>
 
+#define SEP_SLASH "/"
+#define SEP_EQUAL "="
+#define SEP_TPOIN ":"
+#define SEP_ESPAC " "
+#define TITLE_PATH "PATH"
+#define TITLE_DIR "PWD"
+#define TITLE_FILE "_"
+
 /**
  * struct built_t - anothers commands.
  * @comand: command.
@@ -18,23 +26,30 @@
 typedef struct built_t
 {
 	char *comand;
-	int (*func)(char **);
+	int (*func)(char **, char **, int);
 	struct built_t *next;
 } built;
 
 void func_loop(char **environ);
-int (*builtin(char **s))(char **);
+int (*builtin(char *s))(char **argv, char **environ, int count);
 
-char **searchpath(char **argv, char **path, int status);
-char **divpath(char **environ);
-void search_command(char **argv, char **environ);
+char **searchpath(char **argv, char **path, char *dir);
+char **divpath(char **environ, char *dir);
+char *divdir(char **environ, char *dir);
+void search_command(char **argv, char **environ, int count);
 char **arguments(char *s);
-int ex(char **environ);
-int envir(char **environ);
+int ex(char **argv, char **environ, int count);
+int envir(char **argv, char **environ, int count);
 int _putchar(char *c);
 void newline(int number);
+void printerror(char *file, char **argv, int count, char *message);
+void printnumber(int number);
+void exec(char *str, ssize_t line_length, char **environ, int conter);
+int check_string(char *str, ssize_t length);
 
 int _strcmp(char *s1, char *s2);
 char *_strcat(char *dest, char *src);
+char *_strdup(char *str);
+int _isdigit(char c);
 
 #endif
