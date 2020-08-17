@@ -1,13 +1,16 @@
 #include "shell.h"
 /**
- * func_loop - loop infinite.
- * @environ: environ.
+ * exec - run the command in the PATH or in the builtin.
+ * @str: string given by user.
+ * @line_length: string size str.
+ * @environ: environment variables.
+ * @conter: execution counter.
  * Return: void
  */
 void exec(char *str, ssize_t line_length, char **environ, int conter)
 {
 	char **argv;
-	int (*validar)(char **, char **, int);
+	void (*validar)(char **, char **, int);
 	int argc, i = 0, count = 0;
 
 	argc = check_string(str, line_length);
@@ -19,7 +22,7 @@ void exec(char *str, ssize_t line_length, char **environ, int conter)
 			count = 0;
 			while (argv[i][count])
 				count++;
-			if(count == 0)
+			if (count == 0)
 				argv[i] = NULL;
 			i++;
 		}
@@ -31,9 +34,8 @@ void exec(char *str, ssize_t line_length, char **environ, int conter)
 	}
 }
 /**
- * func_loop - loop infinite.
- * @environ: environ.
- * Return: void
+ * func_loop - environment in interactive mode.
+ * @environ: environment variables.
  */
 void func_loop(char **environ)
 {

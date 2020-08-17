@@ -1,10 +1,11 @@
 #include "shell.h"
 /**
- * ex - closed shell process.
- * @environ: environ.
- * Return: 0 always.
+ * ex - close the shell process.
+ * @argv: user-given arguments.
+ * @environ: environment variables.
+ * @count: execution counter.
  */
-int ex(char **argv, char **environ, int count)
+void ex(char **argv, char **environ, int count)
 {
 	char *file;
 	int fd, i = 0, flag = 0;
@@ -23,38 +24,37 @@ int ex(char **argv, char **environ, int count)
 			}
 		}
 	}
-
 	if (flag)
-	{
 		printerror(file, argv, count, "Illegal number");
-		return (0);
+	else
+	{
+		fd = close(STDIN_FILENO);
+		if (fd == -1)
+			perror("ERROR");
 	}
-	fd = close(STDIN_FILENO);
-	if (fd == -1)
-		perror("ERROR");
-	return (0);
 }
 /**
- * envir - print environment.
- * @environ: environ
- * Return: 0 always.
+ * envir - print environment variables.
+ * @argv: user-given arguments.
+ * @environ: environment variables.
+ * @count: execution counter.
  */
-int envir(char **argv, char **environ, int count)
+void envir(char **argv, char **environ, int count)
 {
 	int i = 0;
 	char *file;
 
 	file = divdir(environ, TITLE_FILE);
-	if(argv[1] != NULL)
-	{
+	if (argv[1] != NULL)
 		printerror(file, argv, count, "No such file or directory");
-		return (0);
-	}
-	while (environ[i])
+	else
 	{
-		_putchar(environ[i]);
-		write(STDIN_FILENO, "\n", 1);
-		i++;
+		while (environ[i])
+		{
+			_putchar(environ[i]);
+			write(STDIN_FILENO, "\n", 1);
+			i++;
+		}
 	}
-	return (0);
+
 }

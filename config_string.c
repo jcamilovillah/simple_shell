@@ -1,8 +1,8 @@
 #include "shell.h"
 /**
- * arguments - separate string in arguments.
+ * arguments - separate the user's string into arguments.
  * @s: is the string.
- * Return: 0 always.
+ * Return: the string arguments.
  */
 char **arguments(char *s)
 {
@@ -32,17 +32,16 @@ char **arguments(char *s)
 	str[index] = NULL;
 	count = 0;
 	while (str[index - 1][count + 1])
-               count++;
+		count++;
 	str[index - 1][count] = '\0';
 	return (str);
 }
-
 /**
-* check_string - compares to strings
-* @str: String #1
-* @length: String #2
-* Return: number
-**/
+ * check_string - verify that the string is not empty.
+ * @str: is the string.
+ * @length: string size.
+ * Return: 1 if the string is valid, else 0.
+ **/
 int check_string(char *str, ssize_t length)
 {
 	ssize_t i = 0, count = 1;
@@ -50,8 +49,8 @@ int check_string(char *str, ssize_t length)
 	while (i < length)
 	{
 		if (str[i] == '\t'
-			|| (str[i] == ' ' && str[i + 1] == ' ')
-			|| (str[i] == ' ' && str[i + 1] == '\n'))
+				|| (str[i] == ' ' && str[i + 1] == ' ')
+				|| (str[i] == ' ' && str[i + 1] == '\n'))
 		{
 			if (str[i] == '\t')
 				str[i] = ' ';
@@ -63,13 +62,12 @@ int check_string(char *str, ssize_t length)
 		return (0);
 	return (1);
 }
-
 /**
-* _strcmp - compares to strings
-* @s1: String #1
-* @s2: String #2
-* Return: number
-**/
+ * _strcmp - compare two strings.
+ * @s1: string #1.
+ * @s2: string #2.
+ * Return: 0 if s1 and s2 are equal.
+ **/
 int _strcmp(char *s1, char *s2)
 {
 	int i = 0;
@@ -77,49 +75,38 @@ int _strcmp(char *s1, char *s2)
 	while (s1[i] != '\0' && s2[i] != '\0')
 	{
 		if (s1[i] != s2[i])
-		{
 			return (s1[i] - s2[i]);
-		}
 		i++;
 	}
 	return (0);
 }
-
 /**
-* _strcat - appends two strings
-* @src: First string to append
-* @dest: Second string to append
-* Return: Pointer to the resulting string
-**/
+ * _strcat - concatenate two strings.
+ * @src: First string to append.
+ * @dest: Second string to append.
+ * Return: Pointer to the resulting string.
+ **/
 char *_strcat(char *dest, char *src)
 {
-	int i, j;
+	int i = 0, j;
 
-	i = 0;
 	while (dest[i] != '\0')
-	{
 		i++;
-	}
 	for (j = 0; src[j] != '\0'; j++, i++)
-	{
 		dest[i] = src[j];
-	}
-
 	return (dest);
 }
-
 /**
-* _strcat - appends two strings
-* @src: First string to append
-* @dest: Second string to append
-* Return: Pointer to the resulting string
-**/
+ * _strdup - duplicate one string in another.
+ * @str: is the string.
+ * Return: the new duplicate string.
+ **/
 char *_strdup(char *str)
 {
 	int i = 0;
 	char *cp;
 
-	while(str[i])
+	while (str[i])
 		i++;
 	cp = malloc(sizeof(char) * i);
 	i = 0;

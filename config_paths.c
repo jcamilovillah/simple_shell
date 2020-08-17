@@ -1,10 +1,10 @@
 #include "shell.h"
 /**
- * searchpath - search the path.
- * @argv: string of arguments
- * @path: directories
- * @status: type execution
- * Return: Argv.
+ * searchpath - look for the command in the PWD and PATH directories.
+ * @argv: user-given arguments.
+ * @path: PATH directories.
+ * @dir: PWD directory.
+ * Return: the location of the command or NULL.
  */
 char **searchpath(char **argv, char **path, char *dir)
 {
@@ -12,31 +12,32 @@ char **searchpath(char **argv, char **path, char *dir)
 	struct stat buf;
 	char *aux;
 
-		while (path[i])
-		{
-			aux = _strdup(path[i]);
-			_strcat(aux, SEP_SLASH);
-			_strcat(aux, argv[0]);
-			if (stat(aux, &buf) == 0)
-			{
-				argv[0] = _strdup(aux);
-				return (argv);
-			}
-			i++;
-		}
-		aux = _strdup(dir);
+	while (path[i])
+	{
+		aux = _strdup(path[i]);
+		_strcat(aux, SEP_SLASH);
 		_strcat(aux, argv[0]);
 		if (stat(aux, &buf) == 0)
 		{
 			argv[0] = _strdup(aux);
 			return (argv);
 		}
-		return (NULL);
+		i++;
+	}
+	aux = _strdup(dir);
+	_strcat(aux, argv[0]);
+	if (stat(aux, &buf) == 0)
+	{
+		argv[0] = _strdup(aux);
+		return (argv);
+	}
+	return (NULL);
 }
 /**
- * divpath - separate the directories.
- * @environ: enviroment.
- * Return: result string.
+ * divpath - separate the string PATH into arguments.
+ * @environ: environment variables.
+ * @dir: environment variable to search.
+ * Return: PATH directories.
  */
 char **divpath(char **environ, char *dir)
 {
@@ -71,9 +72,10 @@ char **divpath(char **environ, char *dir)
 	return (argv);
 }
 /**
- * divdir - separate the directories.
- * @environ: enviroment.
- * Return: result string.
+ * divdir - find the PWD directory.
+ * @environ: environment variables.
+ * @dir: environment variable to search.
+ * Return: PWD directory.
  */
 char *divdir(char **environ, char *dir)
 {
@@ -92,10 +94,10 @@ char *divdir(char **environ, char *dir)
 	return (aux);
 }
 /**
- * search_command - search for the command.
- * @argv: arguments whit command
- * @environ: environ
- * Return: result string
+ * search_command - find and run a command.
+ * @argv: user-given arguments.
+ * @environ: environment variables.
+ * @count: execution counter.
  */
 void search_command(char **argv, char **environ, int count)
 {
@@ -125,7 +127,7 @@ void search_command(char **argv, char **environ, int count)
 		exe = searchpath(argv, path, dir);
 		if (exe && fork() == 0)
 			execve(exe[0], exe, NULL);
-		else if(!exe)
+		else if (!exe)
 			printerror(file, argv, count, "not found");
 		wait(NULL);
 	}

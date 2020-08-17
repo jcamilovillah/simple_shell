@@ -1,7 +1,7 @@
 #include "shell.h"
 /**
- * _isdigit - checks for a digit
- * @c: number ASCII
+ * _isdigit - check if a character is a number.
+ * @c: is the character.
  * Return: 1 digit or 0 otherwise.
  */
 int _isdigit(char c)

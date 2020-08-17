@@ -20,27 +20,27 @@
 /**
  * struct built_t - anothers commands.
  * @comand: command.
+ * @func: function to executing.
  * @next: points to the next node.
- * @func: function to executing
  */
 typedef struct built_t
 {
 	char *comand;
-	int (*func)(char **, char **, int);
+	void (*func)(char **, char **, int);
 	struct built_t *next;
 } built;
 
 void func_loop(char **environ);
-int (*builtin(char *s))(char **argv, char **environ, int count);
+void (*builtin(char *s))(char **argv, char **environ, int count);
 
 char **searchpath(char **argv, char **path, char *dir);
 char **divpath(char **environ, char *dir);
 char *divdir(char **environ, char *dir);
 void search_command(char **argv, char **environ, int count);
 char **arguments(char *s);
-int ex(char **argv, char **environ, int count);
-int envir(char **argv, char **environ, int count);
-int _putchar(char *c);
+void ex(char **argv, char **environ, int count);
+void envir(char **argv, char **environ, int count);
+void _putchar(char *c);
 void newline(int number);
 void printerror(char *file, char **argv, int count, char *message);
 void printnumber(int number);
