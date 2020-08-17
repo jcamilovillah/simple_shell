@@ -135,8 +135,6 @@ quits the program, exit the shell.
 .B env:
 displays a list of environment variables
 
-.B help:
-built-in which displays the help information for the included built-in.
 
 .SH RESERVED KEY-WORDS
 
