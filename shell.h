@@ -7,6 +7,7 @@
 #include <fcntl.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <sys/wait.h>
 #include <signal.h>
 
 #define SEP_SLASH "/"
@@ -21,13 +22,11 @@
  * struct built_t - anothers commands.
  * @comand: command.
  * @func: function to executing.
- * @next: points to the next node.
  */
 typedef struct built_t
 {
 	char *comand;
 	void (*func)(char **, char **, int);
-	struct built_t *next;
 } built;
 
 void func_loop(char **environ);

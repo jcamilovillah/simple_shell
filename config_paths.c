@@ -101,11 +101,9 @@ char *divdir(char **environ, char *dir)
  */
 void search_command(char **argv, char **environ, int count)
 {
-	int i = 0, indicator;
 	char **path, **exe, *dir, *file;
-	pid_t pid;
 	struct stat buf;
-
+	
 	path = divpath(environ, TITLE_PATH);
 	dir = divdir(environ, TITLE_DIR);
 	file = divdir(environ, TITLE_FILE);
