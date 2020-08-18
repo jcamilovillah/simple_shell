@@ -50,5 +50,7 @@ int _strcmp(char *s1, char *s2);
 char *_strcat(char *dest, char *src);
 char *_strdup(char *str);
 int _isdigit(char c);
+int strarguments(char *argv);
+int strpath(char **environ);
 
 #endif
