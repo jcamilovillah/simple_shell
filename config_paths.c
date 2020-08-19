@@ -83,9 +83,9 @@ int divpath(char **argv, char *file, char **environ, int count)
 {
 	char *env = NULL, *copy = NULL;
 	pid_t mypid;
+	int state;
 	(void)file;
 	(void)count;
-	int state = 0;
 
 	env = _getenv(environ, "PATH");
 	copy = argv[0];
@@ -120,7 +120,7 @@ int search_command(char **argv, char *file, char **environ, int count)
 {
 	int entry, out;
 	pid_t mypid;
-	int state = 0;
+	int state;
 
 	entry = access(argv[0], F_OK | X_OK | R_OK);
 	if (entry == 0)
