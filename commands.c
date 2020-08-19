@@ -4,6 +4,9 @@
  * @argv: user-given arguments.
  * @environ: environment variables.
  * @count: execution counter.
+ * @file: file
+ * @out: out
+ * Return: out
  */
 int ex(char **argv, char *file, char **environ, int count, int out)
 {
@@ -31,6 +34,9 @@ int ex(char **argv, char *file, char **environ, int count, int out)
  * @argv: user-given arguments.
  * @environ: environment variables.
  * @count: execution counter.
+ * @file: file
+ * @out: out
+ * Return: 0
  */
 int envir(char **argv, char *file, char **environ, int count, int out)
 {

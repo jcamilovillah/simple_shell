@@ -4,7 +4,7 @@
  * @s: is the command to compare.
  * Return: function to perform or NULL.
  */
-int (*builtin(char *s))(char **argv, char *file, char **environ, int count, int out)
+int (*builtin(char *s))(char **, char *, char **, int, int)
 {
 	built ops[] = {
 		{"exit", ex},

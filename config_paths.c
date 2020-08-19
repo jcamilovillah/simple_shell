@@ -63,7 +63,7 @@ char *_getenv(char **environ, char *variable)
 	_strcpy(path, environ[index]);
 	token = strtok(path, "=");
 	token = strtok(NULL, "");
-	result = malloc(sizeof(char) * (_strlen(token) + 1));
+	result = malloc(sizeof(char) * _strlen(token));
 	if (!result)
 	{
 		free(path);
@@ -81,7 +81,7 @@ char *_getenv(char **environ, char *variable)
  */
 char *check_exec(char *path, char *command)
 {
-	char *dir, *dir_command;
+	char *dir = NULL, *dir_command = NULL;
 	int length, entry;
 
 	dir = strtok(path, ":\n");
@@ -111,7 +111,7 @@ char *check_exec(char *path, char *command)
  */
 int divpath(char **argv, char *file, char **environ, int count)
 {
-	char *env, *copy;
+	char *env = NULL, *copy = NULL;
 	pid_t mypid;
 	(void)file;
 	(void)count;

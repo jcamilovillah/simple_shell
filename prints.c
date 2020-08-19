@@ -6,9 +6,9 @@
 void newline(int number)
 {
 	if (number == 1)
-		write(STDIN_FILENO, "shinoobies$ ", 12);
+		write(STDIN_FILENO, "hsh$ ", 5);
 	else
-		write(STDIN_FILENO, "\nshinoobies$ ", 13);
+		write(STDIN_FILENO, "\nhsh$ ", 6);
 }
 /**
  * _putchar - print a string.
