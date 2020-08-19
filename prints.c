@@ -71,5 +71,5 @@ void printerror(char *file, char *argv, int count, char *message)
 	_putchar(argv);
 	write(STDOUT_FILENO, ": ", 2);
 	_putchar(message);
-	write(STDOUT_FILENO, " \n", 2);
+	write(STDOUT_FILENO, "\n", 1);
 }

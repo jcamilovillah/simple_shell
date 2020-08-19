@@ -39,7 +39,5 @@ int _atoi(char *s)
 	}
 	if (sign < 0)
 		total = (-(total));
-	while (total > 255)
-		total -= 256;
 	return (total);
 }

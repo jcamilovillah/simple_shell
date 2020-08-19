@@ -25,8 +25,10 @@ int ex(char **argv, char *file, char **environ, int count, int out)
 				return (127);
 			}
 		}
+		free(argv);
 		exit(_atoi(argv[1]));
 	}
+	free(argv);
 	exit(out);
 }
 /**
