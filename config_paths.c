@@ -103,7 +103,7 @@ int divpath(char **argv, char *file, char **environ, int count)
 		execve(argv[0], argv, environ);
 		exit(0);
 	}
-	wait(NULL);
+	wait(&state);
 	free(argv[0]);
 	return (0);
 }
@@ -119,6 +119,7 @@ int search_command(char **argv, char *file, char **environ, int count)
 {
 	int entry, out;
 	pid_t mypid;
+	int state = 0;
 
 	entry = access(argv[0], F_OK | X_OK | R_OK);
 	if (entry == 0)
@@ -129,7 +130,7 @@ int search_command(char **argv, char *file, char **environ, int count)
 			execve(argv[0], argv, environ);
 			exit(0);
 		}
-		wait(NULL);
+		wait(&state);
 	}
 	else
 		out = divpath(argv, file, environ, count);
