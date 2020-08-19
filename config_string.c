@@ -1,62 +1,49 @@
 #include "shell.h"
 /**
- * arguments - separate the user's string into arguments.
- * @s: pointer string.
- * @environ: environment variables.
- * @count: execution counter.
- * @file: file
- * @out: out
- * Return: out
- */
-int arguments(char *s, char *file, char **environ, int count, int out)
+ * _strcat - concatenate two strings.
+ * @src: First string to append.
+ * @dest: Second string to append.
+ * Return: Pointer to the resulting string.
+ **/
+void _strcat(char *dest, char *src)
 {
-	char **argv, *token;
-	int index = 0;
+	int i = 0, j;
 
-	argv = malloc(64 * sizeof(char *));
-	if (!argv)
-
-	{
-		perror("Error on allocation");
-		exit(0);
-	}
-	token = strtok(s, SEP_ESPAC);
-	while (token)
-	{
-		argv[index] = token;
-		index++;
-		token = strtok(NULL, SEP_ESPAC);
-	}
-	argv[index] = NULL;
-	out = get_command(argv, file, environ, count, out);
-	free(argv);
-	return (out);
+	while (dest[i])
+		i++;
+	for (j = 0; src[j]; j++, i++)
+		dest[i] = src[j];
+	dest[i] = '\0';
 }
 /**
- * check_string - verify that the string is not empty.
- * @str: is the string.
- * @length: string size.
- * Return: 1 if the string is valid, else 0.
- **/
-int check_string(char *str, ssize_t length)
+ * _strlen - length of a string.
+ * @s: pointer.
+ * Return: result.
+ */
+int _strlen(char *s)
 {
-	ssize_t i = 0, count = 1;
+	int cifras = 0;
 
-	while (i < length)
-	{
-		if (str[i] == '\t'
-				|| (str[i] == ' ' && str[i + 1] == ' ')
-				|| (str[i] == ' ' && str[i + 1] == '\n'))
-		{
-			if (str[i] == '\t')
-				str[i] = ' ';
-			count++;
-		}
-		i++;
-	}
-	if (count == i)
-		return (0);
-	return (1);
+	while (*(s + cifras) != '\0')
+		cifras++;
+	return (cifras);
+}
+/**
+ * _strcpy - copies the string pointed to by src.
+ *
+ * @dest: pointer.
+ * @src: pointer.
+ *
+ * Return: void.
+ */
+char *_strcpy(char *dest, char *src)
+{
+	int i;
+
+	for (i = 0; src[i] != '\0'; i++)
+		dest[i] = src[i];
+	dest[i] = '\0';
+	return (dest);
 }
 /**
  * _strcmp - compare two strings.
@@ -75,43 +62,4 @@ int _strcmp(char *s1, char *s2)
 		i++;
 	}
 	return (0);
-}
-/**
- * _strcat - concatenate two strings.
- * @src: First string to append.
- * @dest: Second string to append.
- * Return: Pointer to the resulting string.
- **/
-void _strcat(char *dest, char *src)
-{
-	int i = 0, j;
-
-	while (dest[i])
-		i++;
-	for (j = 0; src[j]; j++, i++)
-		dest[i] = src[j];
-	dest[i] = '\0';
-}
-/**
- * _strdup - duplicate one string in another.
- * @str: is the string.
- * Return: the new duplicate string.
- **/
-char *_strdup(char *str)
-{
-	int i = 0;
-	char *cp;
-
-	while (str[i])
-		i++;
-	i++;
-	cp = malloc(sizeof(char) * i);
-	i = 0;
-	while (str[i])
-	{
-		cp[i] = str[i];
-		i++;
-	}
-	cp[i] = '\0';
-	return (cp);
 }

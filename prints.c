@@ -5,10 +5,9 @@
  */
 void newline(int number)
 {
-	if (number == 1)
-		write(STDIN_FILENO, "hsh$ ", 5);
-	else
-		write(STDIN_FILENO, "\nhsh$ ", 6);
+	(void)number;
+
+	write(STDIN_FILENO, "\nhsh$ ", 6);
 }
 /**
  * _putchar - print a string.

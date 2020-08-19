@@ -29,34 +29,42 @@ typedef struct built_t
 	int (*func)(char **, char *, char **, int, int);
 } built;
 
+/* Interactive mode */
 void func_loop(char **environ, char *argv);
-int (*builtin(char *s))(char **, char *, char **, int, int);
+int check_string(char *str, ssize_t length);
 
-char **searchpath(char **argv, char **path, char *dir);
-int divpath(char **argv, char *file, char **environ, int count);
-char *divdir(char **environ, char *dir);
-int search_command(char **argv, char *file, char **environ, int count);
+/* no-Interactive mode */
+void no_interactive(char **environ, char *file);
+
+/* Arguments configuration */
 int arguments(char *s, char *file, char **environ, int count, int out);
+int get_command(char **argv, char *file, char **environ, int count, int out);
+
+/* Commands structure */
+int (*builtin(char *s))(char **, char *, char **, int, int);
 int ex(char **argv, char *file, char **environ, int count, int out);
 int envir(char **argv, char *file, char **environ, int count, int out);
+
+/* Commands search in the path */
+int search_command(char **argv, char *file, char **environ, int count);
+int divpath(char **argv, char *file, char **environ, int count);
+char *_getenv(char **environ, char *path);
+char *check_exec(char *path, char *command);
+
+/* Strings functions */
+int _strlen(char *s);
+char *_strcpy(char *dest, char *src);
+void _strcat(char *dest, char *src);
+int _strcmp(char *s1, char *s2);
+
+/* Numbers functions */
+int _isdigit(char c);
+int _atoi(char *s);
+
+/* Print functions */
 void _putchar(char *c);
 void newline(int number);
 void printerror(char *file, char *argv, int count, char *message);
 void printnumber(int number);
-int check_string(char *str, ssize_t length);
-char *_getenv(char **environ, char *path);
-
-int _strcmp(char *s1, char *s2);
-void _strcat(char *dest, char *src);
-char *_strdup(char *str);
-int _isdigit(char c);
-char *_stringscat(char *dest, char *src1, char *src2);
-int lenarguments(char *s);
-int get_command(char **argv, char *file, char **environ, int count, int out);
-int _atoi(char *s);
-int _strlen(char *s);
-char *_strcpy(char *dest, char *src);
-char *check_exec(char *path, char *command);
-int executes(char **argv, char *file, char **path, int count);
 
 #endif

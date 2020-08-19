@@ -11,10 +11,8 @@ int main(int argc, char **argv, char **environ)
 	(void)argc;
 
 	if (isatty(STDIN_FILENO))
-	{
 		func_loop(environ, argv[0]);
-	}
 	else
-		printf("no interative\n");
+		no_interactive(environ, argv[0]);
 	return (0);
 }

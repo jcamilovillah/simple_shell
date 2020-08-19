@@ -1,38 +1,5 @@
 #include "shell.h"
 /**
- * searchpath - look for the command in the PWD and PATH directories.
- * @argv: user-given arguments.
- * @path: PATH directories.
- * @dir: PWD directory.
- * Return: the location of the command or NULL.
- */
-char **searchpath(char **argv, char **path, char *dir)
-{
-	int i = 0;
-	struct stat buf;
-	char *aux;
-
-	while (path[i])
-	{
-		aux = _stringscat(path[i], SEP_SLASH, argv[0]);
-		if (access(aux, F_OK) != -1)
-		{
-			argv[0] = _strdup(aux);
-			free(aux);
-			return (argv);
-		}
-		i++;
-		free(aux);
-	}
-	_strcat(dir, argv[0]);
-	if (stat(dir, &buf) == 0)
-	{
-		argv[0] = _strdup(dir);
-		return (argv);
-	}
-	return (NULL);
-}
-/**
  * _getenv - get env.
  * @environ: environment variables.
  * @variable: variable.
@@ -41,7 +8,7 @@ char **searchpath(char **argv, char **path, char *dir)
 char *_getenv(char **environ, char *variable)
 {
 	int index = 0, i, length;
-	char *path, *token, *result;
+	char *path = NULL, *token = NULL, *result = NULL;
 
 	length = _strlen(variable);
 	while (environ[index])
@@ -57,13 +24,13 @@ char *_getenv(char **environ, char *variable)
 			break;
 		  index++;
 	}
-	path = malloc(sizeof(char) * _strlen(environ[index]));
+	path = malloc(sizeof(char) * (_strlen(environ[index]) + 1));
 	if (!path)
 		return (NULL);
 	_strcpy(path, environ[index]);
 	token = strtok(path, "=");
 	token = strtok(NULL, "");
-	result = malloc(sizeof(char) * _strlen(token));
+	result = malloc(sizeof(char) * (_strlen(token) + 1));
 	if (!result)
 	{
 		free(path);
