@@ -60,7 +60,6 @@ void func_loop(char **environ, char *file)
 				out = arguments(str, file, environ, count, out);
 		}
 		count++;
-		write(STDIN_FILENO, "\n", 1);
 		free(str);
 	}
 }

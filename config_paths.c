@@ -59,6 +59,7 @@ char *check_exec(char *path, char *command)
 		dir_command = malloc(sizeof(char) * (length + 2));
 		if (!dir_command)
 			return (NULL);
+		dir_command[0] = '\0';
 		_strcat(dir_command, dir);
 		_strcat(dir_command, SEP_SLASH);
 		_strcat(dir_command, command);
