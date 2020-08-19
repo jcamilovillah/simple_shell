@@ -7,7 +7,7 @@ void newline(int number)
 {
 	(void)number;
 
-	write(STDIN_FILENO, "\nhsh$ ", 6);
+	write(STDOUT_FILENO, "\nhsh$ ", 6);
 }
 /**
  * _putchar - print a string.
@@ -19,7 +19,7 @@ void _putchar(char *c)
 
 	while (c[i])
 	{
-		write(STDIN_FILENO, &c[i], 1);
+		write(STDOUT_FILENO, &c[i], 1);
 		i++;
 	}
 }
@@ -33,7 +33,7 @@ void printnumber(int number)
 	char c;
 
 	if (number < 0)
-		write(STDIN_FILENO, "-", 1);
+		write(STDOUT_FILENO, "-", 1);
 	while (number / aux >= 10 || number / aux <= -10)
 	{
 		length++;
@@ -44,12 +44,12 @@ void printnumber(int number)
 		if (number < 0)
 		{
 			c = -((number / aux) % 10) + '0';
-			write(STDIN_FILENO, &c, 1);
+			write(STDOUT_FILENO, &c, 1);
 		}
 		else
 		{
 			c = ((number / aux) % 10) + '0';
-			write(STDIN_FILENO, &c, 1);
+			write(STDOUT_FILENO, &c, 1);
 		}
 		number = number % aux;
 		aux = aux / 10;
@@ -65,11 +65,11 @@ void printnumber(int number)
 void printerror(char *file, char *argv, int count, char *message)
 {
 	_putchar(file);
-	write(STDIN_FILENO, ": ", 2);
+	write(STDOUT_FILENO, ": ", 2);
 	printnumber(count);
-	write(STDIN_FILENO, ": ", 2);
+	write(STDOUT_FILENO, ": ", 2);
 	_putchar(argv);
-	write(STDIN_FILENO, ": ", 2);
+	write(STDOUT_FILENO, ": ", 2);
 	_putchar(message);
-	write(STDIN_FILENO, " \n", 2);
+	write(STDOUT_FILENO, " \n", 2);
 }

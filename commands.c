@@ -51,7 +51,7 @@ int envir(char **argv, char *file, char **environ, int count, int out)
 	while (environ[i])
 	{
 		_putchar(environ[i]);
-		write(STDIN_FILENO, "\n", 1);
+		write(STDOUT_FILENO, "\n", 1);
 		i++;
 	}
 	return (0);

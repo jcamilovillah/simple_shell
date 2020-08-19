@@ -13,10 +13,7 @@ int arguments1(char *file, char **environ, char *s)
 
 	argv = malloc(64 * sizeof(char *));
 	if (!argv)
-	{
-		perror("Error on allocation");
 		exit(0);
-	}
 	token = strtok(s, SEP_ESPAC);
 	while (token)
 	{
@@ -51,9 +48,15 @@ void no_interactive(char **environ, char *file)
 			str[index + 1] = '\0';
 			if (check_string(str, _strlen(str)) > 0)
 				out = arguments1(file, environ, str);
+			index = -1;
 			free(str);
-		    exit(out);
+			str = malloc(sizeof(char) * size);
+			if (!str)
+				exit(0);
 		}
 		index++;
+		/*printf("%d\n", index);*/
 	}
+	free(str);
+	exit(out);
 }

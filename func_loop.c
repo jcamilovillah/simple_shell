@@ -40,7 +40,7 @@ void func_loop(char **environ, char *file)
 	signal(SIGINT, newline);
 	while (1)
 	{
-		write(STDIN_FILENO, "hsh$ ", 5);
+		write(STDOUT_FILENO, "hsh$ ", 5);
 		str = malloc(sizeof(char) * size);
 		if (!str)
 		{
@@ -50,7 +50,7 @@ void func_loop(char **environ, char *file)
 		line_length = getline(&str, &size, stdin);
 		if (line_length == EOF)
 		{
-			write(STDIN_FILENO, "\n", 1);
+			write(STDOUT_FILENO, "\n", 1);
 			free(str);
 			exit(out);
 		}
