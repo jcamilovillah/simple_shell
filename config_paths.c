@@ -85,6 +85,7 @@ int divpath(char **argv, char *file, char **environ, int count)
 	pid_t mypid;
 	(void)file;
 	(void)count;
+	int state = 0;
 
 	env = _getenv(environ, "PATH");
 	copy = argv[0];
