@@ -11,6 +11,7 @@ int arguments(char *s, char *file, char **environ, int count, int out)
 
 	argv = malloc(64 * sizeof(char *));
 	if (!argv)
+
 	{
 		perror("Error on allocation");
 		exit(0);

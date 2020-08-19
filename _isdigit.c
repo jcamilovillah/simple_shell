@@ -10,7 +10,6 @@ int _isdigit(char c)
 		return (1);
 	return (0);
 }
-
 int lenarguments(char *s)
 {
 	int index = 0, count = 1;
@@ -100,11 +99,11 @@ int _atoi(char *s)
 		total -= 256;
 	return (total);
 }
+
 /**
  * _strlen - length of a string.
- *
  * @s: pointer.
- *
+
  * Return: result.
  */
 int _strlen(char *s)

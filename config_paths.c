@@ -22,6 +22,7 @@ char **searchpath(char **argv, char **path, char *dir)
 			return (argv);
 		}
 		i++;
+		free(aux);
 	}
 	_strcat(dir, argv[0]);
 	if (stat(dir, &buf) == 0)
@@ -54,7 +55,7 @@ char *_getenv(char **environ, char *variable)
 		}
 		if (i == length)
 			break;
-		index++;
+		  index++;
 	}
 	path = malloc(sizeof(char) * _strlen(environ[index]));
 	if (!path)
@@ -94,7 +95,6 @@ char *check_exec(char *path, char *command)
 		_strcat(dir_command, dir);
 		_strcat(dir_command, SEP_SLASH);
 		_strcat(dir_command, command);
-
 		entry = access(dir_command, F_OK | X_OK | R_OK);
 		if (entry == 0)
 			return(dir_command);
@@ -163,4 +163,3 @@ int search_command(char **argv, char *file, char **environ, int count)
 		out = divpath(argv, file, environ, count);
 	return (out);
 }
-

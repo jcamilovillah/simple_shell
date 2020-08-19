@@ -10,7 +10,8 @@ void func_loop(char **environ, char *file)
 	size_t size = 64;
 	ssize_t line_length;
 
-	write(STDIN_FILENO, "$shell ", 8);
+
+	write(STDIN_FILENO, "shinoobies$ ", 12);
 	signal(SIGINT, newline);
 	while (1)
 	{
