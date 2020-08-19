@@ -41,7 +41,6 @@ int ex(char **argv, char *file, char **environ, int count, int out)
 int envir(char **argv, char *file, char **environ, int count, int out)
 {
 	int i = 0;
-	(void)out;
 
 	if (argv[1] != NULL)
 	{
@@ -54,5 +53,5 @@ int envir(char **argv, char *file, char **environ, int count, int out)
 		write(STDOUT_FILENO, "\n", 1);
 		i++;
 	}
-	return (0);
+	return (out);
 }

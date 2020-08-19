@@ -118,7 +118,7 @@ int divpath(char **argv, char *file, char **environ, int count)
  */
 int search_command(char **argv, char *file, char **environ, int count)
 {
-	int entry, out;
+	int entry, out = 0;
 	pid_t mypid;
 	int state;
 
