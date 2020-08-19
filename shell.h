@@ -13,7 +13,7 @@
 #define SEP_SLASH "/"
 #define SEP_EQUAL "="
 #define SEP_TPOIN ":"
-#define SEP_ESPAC " "
+#define SEP_ESPAC " \t\r\n\a"
 #define TITLE_PATH "PATH"
 #define TITLE_DIR "PWD"
 #define TITLE_FILE "_"
@@ -26,35 +26,37 @@
 typedef struct built_t
 {
 	char *comand;
-	void (*func)(char **, char **, int);
+	int (*func)(char **, char *, char **, int, int);
 } built;
 
-void func_loop(char **environ);
-void (*builtin(char *s))(char **argv, char **environ, int count);
+void func_loop(char **environ, char *argv);
+int (*builtin(char *s))(char **argv, char *file, char **environ, int count, int out);
 
 char **searchpath(char **argv, char **path, char *dir);
-char **divpath(char **environ, char *dir);
+int divpath(char **argv, char *file, char **environ, int count);
 char *divdir(char **environ, char *dir);
-void search_command(char **argv, char **environ, int count);
-char **arguments(char *s);
-void ex(char **argv, char **environ, int count);
-void envir(char **argv, char **environ, int count);
+int search_command(char **argv, char *file, char **environ, int count);
+int arguments(char *s, char *file, char **environ, int count, int out);
+int ex(char **argv, char *file, char **environ, int count, int out);
+int envir(char **argv, char *file, char **environ, int count, int out);
 void _putchar(char *c);
 void newline(int number);
-void printerror(char *file, char **argv, int count, char *message);
+void printerror(char *file, char *argv, int count, char *message);
 void printnumber(int number);
-void exec(char *str, ssize_t line_length, char **environ, int conter);
 int check_string(char *str, ssize_t length);
+char *_getenv(char **environ, char *path);
 
 int _strcmp(char *s1, char *s2);
-char *_strcat(char *dest, char *src);
+void _strcat(char *dest, char *src);
 char *_strdup(char *str);
 int _isdigit(char c);
-<<<<<<< HEAD
+char *_stringscat(char *dest, char *src1, char *src2);
+int lenarguments(char *s);
+int get_command (char **argv, char *file, char **environ, int count, int out);
+int _atoi(char *s);
 int _strlen(char *s);
-=======
-int strarguments(char *argv);
-int strpath(char **environ);
->>>>>>> 76a5d2e87d329476ccf845e7145d227802401254
+char *_strcpy(char *dest, char *src);
+char *check_exec(char *path, char *command);
+int executes(char **argv, char *file, char **path, int count);
 
 #endif

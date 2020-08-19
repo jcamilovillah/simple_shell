@@ -63,13 +63,13 @@ void printnumber(int number)
  * @count: execution counter.
  * @message: error message to print.
  */
-void printerror(char *file, char **argv, int count, char *message)
+void printerror(char *file, char *argv, int count, char *message)
 {
 	_putchar(file);
 	write(STDIN_FILENO, ": ", 2);
 	printnumber(count);
 	write(STDIN_FILENO, ": ", 2);
-	_putchar(argv[0]);
+	_putchar(argv);
 	write(STDIN_FILENO, ": ", 2);
 	_putchar(message);
 	write(STDIN_FILENO, " \n", 2);
