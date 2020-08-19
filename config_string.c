@@ -16,7 +16,7 @@ char **arguments(char *s)
 		index++;
 	}
 	index = 0;
-	str = malloc(count * sizeof(char *));
+	str = malloc(1024 * sizeof(char *));
 	if (!str)
 	{
 		write(STDERR_FILENO, ": allocation error\n", 20);

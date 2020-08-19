@@ -31,6 +31,13 @@ void exec(char *str, ssize_t line_length, char **environ, int conter)
 			validar(argv, environ, conter);
 		else
 			search_command(argv, environ, conter);
+		argc--;
+		while(argc >= 0)
+		{
+			free(argv[argc]);
+			argc--;
+		}
+		free(argv);
 	}
 }
 /**
@@ -42,9 +49,9 @@ void func_loop(char **environ)
 	char *str = NULL;
 	size_t size = 0;
 	int count = 1;
-	ssize_t line_length;
+	ssize_t line_length = 0;
 
-	write(STDIN_FILENO, "$shell ", 8);
+	write(STDIN_FILENO, "shinoobies$ ", 12);
 	signal(SIGINT, newline);
 	while (1)
 	{
@@ -56,6 +63,7 @@ void func_loop(char **environ)
 		}
 		if (line_length > 1 && str[0] != '\n')
 			exec(str, line_length, environ, count);
+		free(str);
 		count++;
 		newline(1);
 	}

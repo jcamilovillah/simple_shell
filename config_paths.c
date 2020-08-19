@@ -20,9 +20,11 @@ char **searchpath(char **argv, char **path, char *dir)
 		if (stat(aux, &buf) == 0)
 		{
 			argv[0] = _strdup(aux);
+			free(aux);
 			return (argv);
 		}
 		i++;
+		free(aux);
 	}
 	aux = _strdup(dir);
 	_strcat(aux, argv[0]);
@@ -52,6 +54,7 @@ char **divpath(char **environ, char *dir)
 			index++;
 		else
 			break;
+		free(aux);
 	}
 	while (environ[index][i])
 	{
@@ -89,6 +92,7 @@ char *divdir(char **environ, char *dir)
 			index++;
 		else
 			break;
+		free(aux);
 	}
 	aux = strtok(NULL, "\n");
 	return (aux);
@@ -129,5 +133,15 @@ void search_command(char **argv, char **environ, int count)
 			printerror(file, argv, count, "not found");
 		wait(NULL);
 	}
+	/*while(i >= 0)
+	{
+		free(path[i]);
+		i--;
+	}
+	i = 0;
+	while(i >= 0)
+	{
+		free(exe[i]);
+		i--;
+	}*/
 }
-

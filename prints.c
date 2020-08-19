@@ -6,9 +6,9 @@
 void newline(int number)
 {
 	if (number == 1)
-		write(STDIN_FILENO, "$shell ", 7);
+		write(STDIN_FILENO, "shinoobies$ ", 12);
 	else
-		write(STDIN_FILENO, "\n$shell ", 8);
+		write(STDIN_FILENO, "\nshinoobies$ ", 13);
 }
 /**
  * _putchar - print a string.
