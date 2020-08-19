@@ -30,7 +30,7 @@ typedef struct built_t
 } built;
 
 void func_loop(char **environ, char *argv);
-int (*builtin(char *s))(char **argv, char *file, char **environ, int count, int out);
+int (*builtin(char *s))(char **, char *, char **, int, int);
 
 char **searchpath(char **argv, char **path, char *dir);
 int divpath(char **argv, char *file, char **environ, int count);
@@ -52,7 +52,7 @@ char *_strdup(char *str);
 int _isdigit(char c);
 char *_stringscat(char *dest, char *src1, char *src2);
 int lenarguments(char *s);
-int get_command (char **argv, char *file, char **environ, int count, int out);
+int get_command(char **argv, char *file, char **environ, int count, int out);
 int _atoi(char *s);
 int _strlen(char *s);
 char *_strcpy(char *dest, char *src);

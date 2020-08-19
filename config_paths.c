@@ -33,10 +33,10 @@ char **searchpath(char **argv, char **path, char *dir)
 	return (NULL);
 }
 /**
- * divpath - separate the string PATH into arguments.
+ * _getenv - get env.
  * @environ: environment variables.
- * @dir: environment variable to search.
- * Return: PATH directories.
+ * @variable: variable.
+ * Return: result.
  */
 char *_getenv(char **environ, char *variable)
 {
@@ -74,10 +74,10 @@ char *_getenv(char **environ, char *variable)
 	return (result);
 }
 /**
- * divpath - separate the string PATH into arguments.
- * @environ: environment variables.
- * @dir: environment variable to search.
- * Return: PATH directories.
+ * check_exec - check exec.
+ * @path: path.
+ * @command: command.
+ * Return: NULL.
  */
 char *check_exec(char *path, char *command)
 {
@@ -97,7 +97,7 @@ char *check_exec(char *path, char *command)
 		_strcat(dir_command, command);
 		entry = access(dir_command, F_OK | X_OK | R_OK);
 		if (entry == 0)
-			return(dir_command);
+			return (dir_command);
 		free(dir_command);
 		dir = strtok(NULL, ":\n");
 	}
@@ -105,9 +105,11 @@ char *check_exec(char *path, char *command)
 }
 /**
  * divpath - separate the string PATH into arguments.
+ * @argv: pointer string.
  * @environ: environment variables.
- * @dir: environment variable to search.
- * Return: PATH directories.
+ * @count: execution counter.
+ * @file: file
+ * Return: 0
  */
 int divpath(char **argv, char *file, char **environ, int count)
 {
@@ -124,7 +126,7 @@ int divpath(char **argv, char *file, char **environ, int count)
 		printerror(file, copy, count, "not found");
 		if (env)
 			free(env);
-		return(127);
+		return (127);
 	}
 	free(env);
 	mypid = fork();
@@ -141,7 +143,9 @@ int divpath(char **argv, char *file, char **environ, int count)
  * search_command - find and run a command.
  * @argv: user-given arguments.
  * @environ: environment variables.
- * @count: execution counter.
+ * @file: file
+ * @count: count
+ * Return: out
  */
 int search_command(char **argv, char *file, char **environ, int count)
 {

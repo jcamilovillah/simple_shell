@@ -10,23 +10,29 @@ int _isdigit(char c)
 		return (1);
 	return (0);
 }
+/**
+ * lenarguments - length arguments.
+ * @s: pointer.
+ * Return: count.
+ */
 int lenarguments(char *s)
 {
 	int index = 0, count = 1;
-	
+
 	while (s[index])
-    {
-        if (s[index] == ':')
-            count++;
-        index++;
-    }
+	{
+		if (s[index] == ':')
+			count++;
+		index++;
+	}
 	count++;
-	return(count);
+	return (count);
 }
 /**
- * _strcat - concatenate two strings.
- * @src: First string to append.
- * @dest: Second string to append.
+ * _stringscat - concatenate two strings.
+ * @src1: First string to append.
+ * @dest: destinatiion.
+ * @src2: Second string to append.
  * Return: Pointer to the resulting string.
  **/
 char *_stringscat(char *dest, char *src1, char *src2)
@@ -51,8 +57,16 @@ char *_stringscat(char *dest, char *src1, char *src2)
 	result[i] = '\0';
 	return (result);
 }
-
-int get_command (char **argv, char *file, char **environ, int count, int out)
+/**
+ * get_command - pos get commands.
+ * @argv: pointer string.
+ * @environ: environment variables.
+ * @count: execution counter.
+ * @file: file
+ * @out: out
+ * Return: out
+ */
+int get_command(char **argv, char *file, char **environ, int count, int out)
 {
 	int (*validar)(char **, char *, char **, int, int);
 
@@ -66,9 +80,7 @@ int get_command (char **argv, char *file, char **environ, int count, int out)
 
 /**
  * _atoi - convert a string to an integer.
- *
  * @s: pointer.
- *
  * Return: result entero.
  */
 int _atoi(char *s)
@@ -103,7 +115,6 @@ int _atoi(char *s)
 /**
  * _strlen - length of a string.
  * @s: pointer.
-
  * Return: result.
  */
 int _strlen(char *s)

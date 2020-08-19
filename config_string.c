@@ -1,8 +1,12 @@
 #include "shell.h"
 /**
  * arguments - separate the user's string into arguments.
- * @s: is the string.
- * Return: the string arguments.
+ * @s: pointer string.
+ * @environ: environment variables.
+ * @count: execution counter.
+ * @file: file
+ * @out: out
+ * Return: out
  */
 int arguments(char *s, char *file, char **environ, int count, int out)
 {

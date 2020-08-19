@@ -2,6 +2,7 @@
 /**
  * func_loop - environment in interactive mode.
  * @environ: environment variables.
+ * @file: file
  */
 void func_loop(char **environ, char *file)
 {
