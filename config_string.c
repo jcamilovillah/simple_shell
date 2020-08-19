@@ -4,32 +4,28 @@
  * @s: is the string.
  * Return: the string arguments.
  */
-char **arguments(char *s)
+int arguments(char *s, char *file, char **environ, int count, int out)
 {
-	char **str, *token;
-	int index = 0, count = 1;
+	char **argv, *token;
+	int index = 0;
 
-	count = strarguments(s);
-	index = 0;
-	str = malloc(count * sizeof(char *));
-	if (!str)
+	argv = malloc(64 * sizeof(char *));
+	if (!argv)
 	{
-		write(STDERR_FILENO, ": allocation error\n", 20);
-		exit(EXIT_FAILURE);
+		perror("Error on allocation");
+		exit(0);
 	}
 	token = strtok(s, SEP_ESPAC);
 	while (token)
 	{
-		str[index] = token;
+		argv[index] = token;
 		index++;
 		token = strtok(NULL, SEP_ESPAC);
 	}
-	str[index] = NULL;
-	count = 0;
-	while (str[index - 1][count + 1])
-		count++;
-	str[index - 1][count] = '\0';
-	return (str);
+	argv[index] = NULL;
+	out = get_command(argv, file, environ, count, out);
+	free(argv);
+	return (out);
 }
 /**
  * check_string - verify that the string is not empty.
@@ -81,7 +77,7 @@ int _strcmp(char *s1, char *s2)
  * @dest: Second string to append.
  * Return: Pointer to the resulting string.
  **/
-char *_strcat(char *dest, char *src)
+void _strcat(char *dest, char *src)
 {
 	int i = 0, j;
 
@@ -89,7 +85,7 @@ char *_strcat(char *dest, char *src)
 		i++;
 	for (j = 0; src[j] != '\0'; j++, i++)
 		dest[i] = src[j];
-	return (dest);
+	dest[i] = '\0';
 }
 /**
  * _strdup - duplicate one string in another.
@@ -103,6 +99,7 @@ char *_strdup(char *str)
 
 	while (str[i])
 		i++;
+	i++;
 	cp = malloc(sizeof(char) * i);
 	i = 0;
 	while (str[i])

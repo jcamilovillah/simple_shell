@@ -5,12 +5,11 @@
  * @environ: environment variables.
  * @count: execution counter.
  */
-void ex(char **argv, char **environ, int count)
+int ex(char **argv, char *file, char **environ, int count, int out)
 {
-	char *file;
-	int fd, i = 0, flag = 0;
+	int i = 0;
+	(void)environ;
 
-	file = divdir(environ, TITLE_FILE);
 	if (argv[1])
 	{
 		while (argv[1][i])
@@ -19,19 +18,13 @@ void ex(char **argv, char **environ, int count)
 				i++;
 			else
 			{
-				flag = 1;
-				break;
+				printerror(file, argv[0], count, "Illegal number");
+				return (127);
 			}
 		}
+		exit(_atoi(argv[1]));
 	}
-	if (flag)
-		printerror(file, argv, count, "Illegal number");
-	else
-	{
-		fd = close(STDIN_FILENO);
-		if (fd == -1)
-			perror("ERROR");
-	}
+	exit(out);
 }
 /**
  * envir - print environment variables.
@@ -39,22 +32,21 @@ void ex(char **argv, char **environ, int count)
  * @environ: environment variables.
  * @count: execution counter.
  */
-void envir(char **argv, char **environ, int count)
+int envir(char **argv, char *file, char **environ, int count, int out)
 {
 	int i = 0;
-	char *file;
+	(void)out;
 
-	file = divdir(environ, TITLE_FILE);
 	if (argv[1] != NULL)
-		printerror(file, argv, count, "No such file or directory");
-	else
 	{
-		while (environ[i])
-		{
-			_putchar(environ[i]);
-			write(STDIN_FILENO, "\n", 1);
-			i++;
-		}
+		printerror(file, argv[0], count, "No such file or directory");
+		return (127);
 	}
-
+	while (environ[i])
+	{
+		_putchar(environ[i]);
+		write(STDIN_FILENO, "\n", 1);
+		i++;
+	}
+	return (0);
 }

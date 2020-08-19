@@ -9,10 +9,11 @@
 int main(int argc, char **argv, char **environ)
 {
 	(void)argc;
-	(void)argv;
 
 	if (isatty(STDIN_FILENO))
-		func_loop(environ);
+	{
+		func_loop(environ, argv[0]);
+	}
 	else
 		printf("no interative\n");
 	return (0);
