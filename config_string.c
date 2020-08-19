@@ -9,12 +9,7 @@ char **arguments(char *s)
 	char **str, *token;
 	int index = 0, count = 1;
 
-	while (s[index])
-	{
-		if (s[index] == ' ')
-			count++;
-		index++;
-	}
+	count = strarguments(s);
 	index = 0;
 	str = malloc(1024 * sizeof(char *));
 	if (!str)
