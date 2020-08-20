@@ -74,7 +74,7 @@ void printerror(char *file, char *argv, int count, char *message)
 	write(STDOUT_FILENO, "\n", 1);
 }
 /**
- * printerror - print error format.
+ * printerrorex - print error format.
  * @file: execution file.
  * @argv: user-given arguments.
  * @count: execution counter.
