@@ -22,7 +22,7 @@ int arguments1(char *file, char **environ, char *s)
 		token = strtok(NULL, SEP_ESPAC);
 	}
 	argv[index] = NULL;
-	out = get_command(argv, file, environ, count, out);
+	out = get_command(s, argv, file, environ, count, out);
 	free(argv);
 	return (out);
 }

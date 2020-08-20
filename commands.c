@@ -1,6 +1,7 @@
 #include "shell.h"
 /**
  * ex - close the shell process.
+ * @s: string.
  * @argv: user-given arguments.
  * @environ: environment variables.
  * @count: execution counter.
@@ -8,31 +9,22 @@
  * @out: out
  * Return: out
  */
-int ex(char **argv, char *file, char **environ, int count, int out)
+int ex(char *s, char **argv, char *file, char **environ, int count, int out)
 {
-	int i = 0;
 	(void)environ;
 
 	if (argv[1])
 	{
-		while (argv[1][i])
-		{
-			if (_isdigit(argv[1][i]))
-				i++;
-			else
-			{
-				printerror(file, argv[0], count, "Illegal number");
-				return (127);
-			}
-		}
-		free(argv);
-		exit(_atoi(argv[1]));
+		printerror(file, argv[0], count, "Illegal number");
+		return (127);
 	}
 	free(argv);
+	free(s);
 	exit(out);
 }
 /**
  * envir - print environment variables.
+ * @s: string.
  * @argv: user-given arguments.
  * @environ: environment variables.
  * @count: execution counter.
@@ -40,9 +32,10 @@ int ex(char **argv, char *file, char **environ, int count, int out)
  * @out: out
  * Return: 0
  */
-int envir(char **argv, char *file, char **environ, int count, int out)
+int envir(char *s, char **argv, char *file, char **environ, int count, int out)
 {
 	int i = 0;
+	(void)s;
 
 	if (argv[1] != NULL)
 	{

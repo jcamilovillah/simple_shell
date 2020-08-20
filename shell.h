@@ -26,7 +26,7 @@
 typedef struct built_t
 {
 	char *comand;
-	int (*func)(char **, char *, char **, int, int);
+	int (*func)(char *, char **, char *, char **, int, int);
 } built;
 
 /* Interactive mode */
@@ -40,12 +40,12 @@ int check_string1(char *str, ssize_t length);
 
 /* Arguments configuration */
 int arguments(char *s, char *file, char **environ, int count, int out);
-int get_command(char **argv, char *file, char **environ, int count, int out);
+int get_command(char *s, char **av, char *fl, char **env, int count, int out);
 
 /* Commands structure */
-int (*builtin(char *s))(char **, char *, char **, int, int);
-int ex(char **argv, char *file, char **environ, int count, int out);
-int envir(char **argv, char *file, char **environ, int count, int out);
+int (*builtin(char *s))(char *, char **, char *, char **, int, int);
+int ex(char *s, char **argv, char *file, char **environ, int count, int out);
+int envir(char *s, char **av, char *fl, char **env, int count, int out);
 
 /* Commands search in the path */
 int search_command(char **argv, char *file, char **environ, int count);

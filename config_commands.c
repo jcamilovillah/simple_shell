@@ -1,22 +1,23 @@
 #include "shell.h"
 /**
  * get_command - pos get commands.
- * @argv: pointer string.
- * @environ: environment variables.
+ * @s: string.
+ * @av: pointer string.
+ * @env: environment variables.
  * @count: execution counter.
- * @file: file
+ * @fl: file
  * @out: out
  * Return: out
  */
-int get_command(char **argv, char *file, char **environ, int count, int out)
+int get_command(char *s, char **av, char *fl, char **env, int count, int out)
 {
-	int (*validar)(char **, char *, char **, int, int);
+	int (*validar)(char *, char **, char *, char **, int, int);
 
-	validar = builtin(argv[0]);
+	validar = builtin(av[0]);
 	if (validar)
-		out = validar(argv, file, environ, count, out);
+		out = validar(s, av, fl, env, count, out);
 	else
-		out = search_command(argv, file, environ, count);
+		out = search_command(av, fl, env, count);
 	return (out);
 }
 /**
@@ -48,7 +49,7 @@ int arguments(char *s, char *file, char **environ, int count, int out)
 		token = strtok(NULL, SEP_ESPAC);
 	}
 	argv[index] = NULL;
-	out = get_command(argv, file, environ, count, out);
+	out = get_command(s, argv, file, environ, count, out);
 	free(argv);
 	return (out);
 }
