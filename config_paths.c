@@ -85,7 +85,7 @@ int divpath(char **argv, char *file, char **environ, int count)
 {
 	char *env = NULL, *copy = NULL;
 	pid_t mypid;
-	int state;
+	int state, out = 0;
 	(void)file;
 	(void)count;
 
@@ -110,7 +110,9 @@ int divpath(char **argv, char *file, char **environ, int count)
 	}
 	wait(&state);
 	free(argv[0]);
-	return (0);
+	if (WIFEXITED(state))
+		out = WEXITSTATUS(state);
+	return (out);
 }
 /**
  * search_command - find and run a command.
@@ -136,6 +138,8 @@ int search_command(char **argv, char *file, char **environ, int count)
 			exit(0);
 		}
 		wait(&state);
+		if (WIFEXITED(state))
+			out = WEXITSTATUS(state);
 	}
 	else
 	{
