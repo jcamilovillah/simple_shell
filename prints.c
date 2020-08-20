@@ -73,3 +73,23 @@ void printerror(char *file, char *argv, int count, char *message)
 	_putchar(message);
 	write(STDOUT_FILENO, "\n", 1);
 }
+/**
+ * printerror - print error format.
+ * @file: execution file.
+ * @argv: user-given arguments.
+ * @count: execution counter.
+ * @message: error message to print.
+ */
+void printerrorex(char *file, char **argv, int count, char *message)
+{
+	_putchar(file);
+	write(STDOUT_FILENO, ": ", 2);
+	printnumber(count);
+	write(STDOUT_FILENO, ": ", 2);
+	_putchar(argv[0]);
+	write(STDOUT_FILENO, ": ", 2);
+	_putchar(message);
+	write(STDOUT_FILENO, ": ", 2);
+	_putchar(argv[1]);
+	write(STDOUT_FILENO, "\n", 1);
+}

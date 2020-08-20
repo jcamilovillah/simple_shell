@@ -72,5 +72,6 @@ void _putchar(char *c);
 void newline(int number);
 void printerror(char *file, char *argv, int count, char *message);
 void printnumber(int number);
+void printerrorex(char *file, char **argv, int count, char *message);
 
 #endif
