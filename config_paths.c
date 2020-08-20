@@ -56,7 +56,7 @@ char *check_exec(char *path, char *command)
 	dir = strtok(path, ":\n");
 	while (dir)
 	{
-		length = _strlen(path);
+		length = _strlen(dir);
 		length += _strlen(command);
 		dir_command = malloc(sizeof(char) * (length + 2));
 		if (!dir_command)
@@ -108,10 +108,13 @@ int divpath(char **argv, char *file, char **environ, int count)
 		execve(argv[0], argv, environ);
 		exit(0);
 	}
-	wait(&state);
-	free(argv[0]);
-	if (WIFEXITED(state))
+	else
+	{
+		wait(&state);
+		free(argv[0]);
+		if (WIFEXITED(state))
 		out = WEXITSTATUS(state);
+	}
 	return (out);
 }
 /**
@@ -137,9 +140,12 @@ int search_command(char **argv, char *file, char **environ, int count)
 			execve(argv[0], argv, environ);
 			exit(0);
 		}
+		else
+		{
 		wait(&state);
 		if (WIFEXITED(state))
 			out = WEXITSTATUS(state);
+		}
 	}
 	else
 	{
