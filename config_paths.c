@@ -22,8 +22,10 @@ char *_getenv(char **environ, char *variable)
 		}
 		if (i == length)
 			break;
-		  index++;
+		index++;
 	}
+	if (!environ[index])
+		return (NULL);
 	path = malloc(sizeof(char) * (_strlen(environ[index]) + 1));
 	if (!path)
 		return (NULL);
@@ -88,6 +90,8 @@ int divpath(char **argv, char *file, char **environ, int count)
 	(void)count;
 
 	env = _getenv(environ, "PATH");
+	if (!env)
+		return (-1);
 	copy = argv[0];
 	argv[0] = check_exec(env, argv[0]);
 	if (argv[0] == NULL)
@@ -134,6 +138,13 @@ int search_command(char **argv, char *file, char **environ, int count)
 		wait(&state);
 	}
 	else
+	{
 		out = divpath(argv, file, environ, count);
+		if (out == -1)
+		{
+			printerror(file, argv[0], count, "not found");
+			return (1);
+		}
+	}
 	return (out);
 }
