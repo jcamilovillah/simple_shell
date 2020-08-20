@@ -32,6 +32,11 @@ char *_getenv(char **environ, char *variable)
 	_strcpy(path, environ[index]);
 	token = strtok(path, "=");
 	token = strtok(NULL, "");
+	if (!token)
+	{
+		free(path);
+		return (NULL);
+	}
 	result = malloc(sizeof(char) * (_strlen(token) + 1));
 	if (!result)
 	{
