@@ -52,8 +52,8 @@ int check_string1(char *str, ssize_t length)
 void no_interactive(char **environ, char *file)
 {
 	char *str = NULL, buf = '\0';
-	int index = 0, out = 0;
-	size_t size = 1024;
+	int out = 0;
+	size_t size = 64, multi = 1, index = 0;
 
 	str = malloc(sizeof(char) * size);
 	if (!str)
@@ -71,6 +71,12 @@ void no_interactive(char **environ, char *file)
 			str = malloc(sizeof(char) * size);
 			if (!str)
 				exit(0);
+		}
+		if (index == (size * multi) - 2)
+		{
+			str[index + 1] = '\0';
+			str = _realloc(str, size * multi, size * (multi + 1));
+			multi++;
 		}
 		index++;
 		/*printf("%d\n", index);*/

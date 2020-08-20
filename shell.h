@@ -63,6 +63,10 @@ int _strcmp(char *s1, char *s2);
 int _isdigit(char c);
 int _atoi(char *s);
 
+/* Alloc Memory */
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+void _memcpy(char *dest, char *src, unsigned int n);
+
 /* Print functions */
 void _putchar(char *c);
 void newline(int number);
