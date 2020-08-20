@@ -27,6 +27,24 @@ int arguments1(char *file, char **environ, char *s)
 	return (out);
 }
 /**
+ * check_string1 - check the string
+ * @str: string
+ * @length: size string
+ * Return: 0 or 1;
+ */
+int check_string1(char *str, ssize_t length)
+{
+	ssize_t i = 0;
+
+	while (i < length)
+	{
+		if (str[i] != '\t' && str[i] != ' ' && str[i] != '\n')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+/**
  * no_interactive - environment in no-interactive mode.
  * @environ: environment variables.
  * @file: file
@@ -35,7 +53,7 @@ void no_interactive(char **environ, char *file)
 {
 	char *str = NULL, buf = '\0';
 	int index = 0, out = 0;
-	size_t size = 64;
+	size_t size = 1024;
 
 	str = malloc(sizeof(char) * size);
 	if (!str)
@@ -46,7 +64,7 @@ void no_interactive(char **environ, char *file)
 		if (buf == '\0' || buf == '\n')
 		{
 			str[index + 1] = '\0';
-			if (check_string(str, _strlen(str)) > 0)
+			if (check_string1(str, _strlen(str)) == 0)
 				out = arguments1(file, environ, str);
 			index = -1;
 			free(str);
