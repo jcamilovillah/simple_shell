@@ -16,7 +16,7 @@ int ex(char *s, char **argv, char *file, char **environ, int count, int out)
 	if (argv[1])
 	{
 		printerror(file, argv[0], count, "Illegal number");
-		return (127);
+		exit (1);
 	}
 	free(argv);
 	free(s);
