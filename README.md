@@ -1,5 +1,6 @@
 <img src="https://pbs.twimg.com/media/EfpJUkaXkAAwhhT?format=jpg&name=900x900" alt="shell" width="1000">
 
+# S I M P L E   S H E L L
 
 ## Introduction 🚀
 
@@ -43,6 +44,29 @@ after compilation you can excecute with this command:
 * press enter after entering the command
 * to end the execution of the `simple_shell` program press `ctrl + d` or write the word `exit`
 
+Your shell should work like this in interactive mode:
+```
+$ ./hsh
+($) /bin/ls
+hsh main.c shell.c
+($)
+($) exit
+$
+```
+But also in non-interactive mode:
+```
+$ echo "/bin/ls" | ./hsh
+hsh main.c shell.c test_ls_2
+$
+$ cat test_ls_2
+/bin/ls
+/bin/ls
+$
+$ cat test_ls_2 | ./hsh
+hsh main.c shell.c test_ls_2
+hsh main.c shell.c test_ls_2
+$
+```
 ## Authors ✒️
 
 <p align="left">
