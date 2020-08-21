@@ -4,12 +4,13 @@
  * @file: file
  * @environ: environment variables.
  * @s: pointer string.
+ * @out: exit status.
  * Return: out
  */
-int arguments1(char *file, char **environ, char *s)
+int arguments1(char *file, char **environ, char *s, int out)
 {
 	char **argv = NULL, *token = NULL;
-	int index = 0, count = 1, out = 0;
+	int index = 0, count = 1;
 
 	argv = malloc(64 * sizeof(char *));
 	if (!argv)
@@ -65,7 +66,7 @@ void no_interactive(char **environ, char *file)
 		{
 			str[index + 1] = '\0';
 			if (check_string1(str, _strlen(str)) == 0)
-				out = arguments1(file, environ, str);
+				out = arguments1(file, environ, str, out);
 			index = -1;
 			free(str);
 			str = malloc(sizeof(char) * size);
@@ -79,7 +80,6 @@ void no_interactive(char **environ, char *file)
 			multi++;
 		}
 		index++;
-		/*printf("%d\n", index);*/
 	}
 	free(str);
 	exit(out);

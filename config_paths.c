@@ -109,16 +109,13 @@ int divpath(char **argv, char *file, char **environ, int count)
 	free(env);
 	mypid = fork();
 	if (mypid == 0)
-	{
 		execve(argv[0], argv, environ);
-		exit(0);
-	}
 	else
 	{
 		wait(&state);
 		free(argv[0]);
 		if (WIFEXITED(state))
-		out = WEXITSTATUS(state);
+			out = WEXITSTATUS(state);
 	}
 	return (out);
 }

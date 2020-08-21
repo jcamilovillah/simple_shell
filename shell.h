@@ -35,7 +35,7 @@ int check_string(char *str, ssize_t length);
 
 /* no-Interactive mode */
 void no_interactive(char **environ, char *file);
-int arguments1(char *file, char **environ, char *s);
+int arguments1(char *file, char **environ, char *s, int out);
 int check_string1(char *str, ssize_t length);
 
 /* Arguments configuration */
