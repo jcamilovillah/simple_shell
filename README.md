@@ -4,7 +4,7 @@
 
 ## Introduction 🚀
 
-The simple shell project is a collaboration between **Oscar De León** and **Juan Camilo Villa**, Full Stack Software Engineering students at **Holberton School**, with which we can emulate the operation of a shell, which contains some of its most basic characteristics, such as : Handle `PATH`, Handle command lines with `arguments`.
+The simple shell project is a collaboration between **Oscar De León** and **Juan Camilo Villa**, Software Engineering students at **Holberton School**, with which we can emulate the operation of a shell, which contains some of its most basic characteristics, such as : Handle `PATH`, Handle command lines with `arguments`.
 
 ## Table of Contents
 1. [Description](#description-)
